@@ -1,7 +1,6 @@
 # Network Isolation PoC
 
-An experimental approach to isolating a Node.js service's network access using
-Docker networking and nginx as an egress proxy.
+An experimental approach to isolating a Node.js service's network access using Docker networking and nginx as an egress proxy.
 
 <details>
 <summary>Expand: <strong>Table of Contents</strong></summary>
@@ -52,22 +51,18 @@ docker compose up -d
 
 ### What Fails: Bypassing the Proxy
 
-Requesting `/google` attempts to access `https://google.com` directly, bypassing
-the nginx proxy. Since the Node.js container runs in an isolated network with no
-direct internet access, this fails:
+Requesting `/google` attempts to access `https://google.com` directly, bypassing the nginx proxy. Since the Node.js container runs in an isolated network with no direct internet access, this fails:
 
 ```sh
 $ curl http://localhost:3000/google
 {"err":"Unable to connect. Is the computer able to access the url?"}
 ```
 
-This demonstrates the network isolation in action-even though the code tries to
-make the request, the network layer blocks it.
+This demonstrates the network isolation in action-even though the code tries to make the request, the network layer blocks it.
 
 ### What Works: Using the Proxy
 
-The `/github` and `/stripe` endpoints route through nginx, which has access to
-both the internal network and the internet:
+The `/github` and `/stripe` endpoints route through nginx, which has access to both the internal network and the internet:
 
 ```sh
 $ curl http://localhost:3000/github
@@ -80,32 +75,24 @@ $ curl http://localhost:3000/github
 ...
 ```
 
-The request flow: `curl` → `nginx:3000` → `node:3000` → `nginx:80` (as
-`github.lokal`) → `api.github.com` → response back through the chain.
+The request flow: `curl` → `nginx:3000` → `node:3000` → `nginx:80` (as `github.lokal`) → `api.github.com` → response back through the chain.
 
 ### Key Takeaway
 
-The application code is identical for both requests-both use `fetch()`. The
-difference is the network topology: one path is blocked by infrastructure, the
-other is explicitly allowed. The application doesn't enforce this policy; the
-network does.
+The application code is identical for both requests-both use `fetch()`. The difference is the network topology: one path is blocked by infrastructure, the other is explicitly allowed. The application doesn't enforce this policy; the network does.
 
 ## The Core Idea
 
-**What if your application couldn't reach the internet at all-except through
-explicit gateways you control?**
+**What if your application couldn't reach the internet at all-except through explicit gateways you control?**
 
-Instead of trusting your application code to "do the right thing," the network
-itself enforces which external services can be accessed. Even if your
-application is compromised, an attacker cannot:
+Instead of trusting your application code to "do the right thing," the network itself enforces which external services can be accessed. Even if your application is compromised, an attacker cannot:
 
 - Exfiltrate data to arbitrary domains
 - Download malicious payloads from the internet
 - Participate in DDoS attacks
 - Connect to command & control servers
 
-This PoC demonstrates this concept using standard Docker networking and nginx as
-a reverse proxy.
+This PoC demonstrates this concept using standard Docker networking and nginx as a reverse proxy.
 
 ## How It Works
 
@@ -133,12 +120,9 @@ a reverse proxy.
 
 ### Network Architecture
 
-1. **Internal Network (`node`)**: The Node.js service runs in an isolated Docker
-   network with `internal: true`, which prevents any direct internet access
-2. **Nginx as Gateway**: Nginx bridges the internal network and external
-   network, acting as a controlled egress point
-3. **Explicit Allowlist**: Only domains configured in `nginx.conf` are
-   accessible to the Node.js service
+1. **Internal Network (`node`)**: The Node.js service runs in an isolated Docker network with `internal: true`, which prevents any direct internet access
+2. **Nginx as Gateway**: Nginx bridges the internal network and external network, acting as a controlled egress point
+3. **Explicit Allowlist**: Only domains configured in `nginx.conf` are accessible to the Node.js service
 
 ### Key Components
 
@@ -184,8 +168,7 @@ curl http://localhost:3000/google   # ❌ Fails - bypasses isolation
 ### Expected Behavior
 
 - **`/github` and `/stripe`**: Successfully fetch data through the nginx proxy
-- **`/google`**: Times out or fails because it tries to connect directly to the
-  internet, which is blocked
+- **`/google`**: Times out or fails because it tries to connect directly to the internet, which is blocked
 
 ### Experiment Further
 
@@ -233,40 +216,32 @@ curl http://localhost:3000/openai
 
 **Try to bypass the isolation:**
 
-Modify the Node.js code to request `https://amazon.com` directly and observe it
-fail. This demonstrates that even if application code is modified (or
-compromised), the network boundary enforces the policy.
+Modify the Node.js code to request `https://amazon.com` directly and observe it fail. This demonstrates that even if application code is modified (or compromised), the network boundary enforces the policy.
 
 ## Security Mechanisms Demonstrated
 
 This PoC implements several defense-in-depth principles:
 
-- **Network Segmentation**: Internal network isolation prevents direct internet
-  access
+- **Network Segmentation**: Internal network isolation prevents direct internet access
 - **Explicit Allowlisting**: Only pre-approved domains are reachable
-- **Least Privilege**: Containers run as non-root users with all capabilities
-  dropped
+- **Least Privilege**: Containers run as non-root users with all capabilities dropped
 - **Immutable Configuration**: Nginx config is mounted read-only
 - **Ephemeral Storage**: Uses tmpfs for temporary files
 
 ## Limitations & Non-Goals
 
-This is intentionally simplified for educational purposes. It does **not**
-address:
+This is intentionally simplified for educational purposes. It does **not** address:
 
-- **SSRF to allowed domains**: If GitHub API is vulnerable, the app can exploit
-  it
+- **SSRF to allowed domains**: If GitHub API is vulnerable, the app can exploit it
 - **Rate limiting**: No request throttling or abuse prevention
 - **Authentication**: No verification of requests through the proxy
 - **High availability**: Single nginx instance, no failover
 - **Monitoring**: No metrics, logging, or alerting
 - **DNS security**: Uses public DNS resolvers without validation
-- **Memory/resource management**: No production-grade error handling or resource
-  limits
+- **Memory/resource management**: No production-grade error handling or resource limits
 - **Performance optimization**: No connection pooling, caching, or optimization
 - **Dynamic configuration**: Changes require nginx restart
-- **Protocol restrictions**: Doesn't support other protocols, which may need a
-  change in using `nginx`
+- **Protocol restrictions**: Doesn't support other protocols, which may need a change in using `nginx`
 
 ## Production Equivalents
 
@@ -335,9 +310,7 @@ If this concept interests you, explore:
 
 ## Why This Matters
 
-Many developers treat network access as binary: "connected to internet" or "not
-connected." This PoC demonstrates that **the network topology itself can be a
-security control**.
+Many developers treat network access as binary: "connected to internet" or "not connected." This PoC demonstrates that **the network topology itself can be a security control**.
 
 When building microservices or handling sensitive data, consider:
 
@@ -345,8 +318,7 @@ When building microservices or handling sensitive data, consider:
 - Can I limit it to specific domains?
 - What happens if this service is compromised?
 
-Network isolation is one layer in a defense-in-depth strategy. It won't stop all
-attacks, but it significantly raises the bar for attackers.
+Network isolation is one layer in a defense-in-depth strategy. It won't stop all attacks, but it significantly raises the bar for attackers.
 
 ## Threat Model
 
@@ -374,13 +346,11 @@ This is an experimental educational project. Contributions welcome for:
 - Bug fixes or improvements to the demo
 - Real-world case studies or war stories
 
-Please note: This is intentionally kept simple. Feature requests that add
-significant complexity may be declined to preserve the educational clarity.
+Please note: This is intentionally kept simple. Feature requests that add significant complexity may be declined to preserve the educational clarity.
 
 ## License
 
-MIT License - feel free to use this for learning, teaching, or as a starting
-point for your own experiments.
+MIT License - feel free to use this for learning, teaching, or as a starting point for your own experiments.
 
 ## Acknowledgments
 
